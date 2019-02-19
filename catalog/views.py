@@ -4,7 +4,7 @@ from django.shortcuts import HttpResponse
 
 def home_view(request):
     if request.user.is_authenticated:
-        return HttpResponse("<h1>Test</h1>")
+        return render(request, 'base_generic.html')
     else:
         return HttpResponse("this guy is trash")
 
