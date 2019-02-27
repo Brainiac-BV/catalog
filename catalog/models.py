@@ -83,12 +83,31 @@ class BookInstance(models.Model):
         return f'{self.id} ({self.book.title})'
 
 
+class Services(models.Model):
+    AVAILABLE_SERVICES = (
+        ('h', 'hair styling'),
+        ('n', 'nail styling'),
+        ('m', 'makeup styling'),
+    )
+    services_provided = models.CharField(
+        max_length = 1,
+        choices=AVAILABLE_SERVICES,
+        blank=True,
+        help_text='select the services you would like to provide'
+    )
+
+    def __str__(self):
+        """String for representing the Model object."""
+        return self.services_provided
+
+
 class Author(models.Model):
     """Model representing an author."""
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     date_of_birth = models.DateField(null=True, blank=True)
     date_of_death = models.DateField('Died', null=True, blank=True)
+    services = models.ManyToManyField(Services)
 
     class Meta:
         ordering = ['last_name', 'first_name']
@@ -100,3 +119,6 @@ class Author(models.Model):
     def __str__(self):
         """String for representing the Model object."""
         return f'{self.last_name}, {self.first_name}'
+
+
+

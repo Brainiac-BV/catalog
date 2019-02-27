@@ -10,4 +10,9 @@ def home_view(request):
 
 
 def catalog_view(request):
-    return HttpResponse("catalogs go here...")
+    return render(request, 'catalog.html')
+    #return HttpResponse("catalogs go here...")
+
+
+def books_view(request):
+    return render(request, 'books.html')

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Book, BookInstance, Author, Genre
+from .models import Book, BookInstance, Author, Genre, Services
 # Register your models here.
 
 '''
@@ -43,11 +43,10 @@ class AuthorAdmin(admin.ModelAdmin):
     # below is used to select which fields will show and orientation
     list_display = ('last_name', 'first_name', 'date_of_birth', 'date_of_death')
     # used for detail view. tuple is for horizontal grouping
-    fields = ['first_name', 'last_name', ('date_of_birth', 'date_of_death')]
+    fields = ['first_name', 'last_name', ('date_of_birth', 'date_of_death'), 'services']
 
 @admin.register(Genre)
 class GenreAdmin(admin.ModelAdmin):
     pass
 
-
-
+admin.site.register(Services)
