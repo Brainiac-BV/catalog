@@ -90,7 +90,7 @@ class Services(models.Model):
         ('m', 'makeup styling'),
     )
     services_provided = models.CharField(
-        max_length = 1,
+        max_length = 10,
         choices=AVAILABLE_SERVICES,
         blank=True,
         help_text='select the services you would like to provide'
